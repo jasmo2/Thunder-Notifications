@@ -3,7 +3,7 @@ class User < ActiveRecord::Base
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
-
+ # after_create :send_mails
   has_many :likes
 
   # A random user I haven't like or unlike yet
@@ -14,5 +14,10 @@ class User < ActiveRecord::Base
 
   def liked?(user)
     likes.find_by_friend_id(user.id)
+  end
+
+  protected
+  def send_mail
+    UserMailer.registration_greatings(self).deliver
   end
 end

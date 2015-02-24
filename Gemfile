@@ -11,8 +11,12 @@ gem 'jquery-rails'
 gem 'jbuilder', '~> 2.0'
 gem 'sdoc', '~> 0.4.0',          group: :doc
 
+gem 'semantic-ui-sass'
+
 gem 'devise'
 gem 'gravatar-ultimate'
+gem "table_print"
+
 
 group :development do
   gem 'pry' #debugger
