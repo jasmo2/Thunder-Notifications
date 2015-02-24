@@ -3,7 +3,7 @@ class User < ActiveRecord::Base
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
- # after_create :send_mails
+  #after_create :send_mail
   has_many :likes
 
   # A random user I haven't like or unlike yet

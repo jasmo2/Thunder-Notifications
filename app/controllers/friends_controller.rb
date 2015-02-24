@@ -15,6 +15,8 @@ class FriendsController < ApplicationController
     current_user.likes.create(friend_id: @friend.id, liked: like_or_unlike)
 
     if @friend.liked?(current_user)
+       UserMailer.match_notifications(current_user, @friend).deliver
+       UserMailer.match_notifications(@friend, current_user).deliver
       # Match have occur
       render :match
     else
